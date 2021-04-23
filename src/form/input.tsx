@@ -5,10 +5,12 @@ export interface InputProps extends React.ComponentProps<typeof Input> {
     name: string
 }
 
-export default function ({ name, ...props }: InputProps) {
+function FormikInput({ name, ...props }: InputProps) {
     const [field,,helpers] = useField(name)
 
     return <Input value={field.value.value} onChange={(e,v) => helpers.setValue(v.value)} {...props}>
         <input onBlur={() => helpers.setTouched(true)} />
     </Input>
 }
+
+export default FormikInput
