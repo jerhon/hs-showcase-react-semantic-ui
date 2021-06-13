@@ -54,13 +54,14 @@ export function LoginPage() {
                                     label="Password"
                                     placeholder="Password"
                                     required
+                                    type="password"
                                     error={form.errors.password && form.touched.password && {
                                             content: form.errors.password,
                                             pointing: 'above'
                                         }} />
                                 <div style={{fontSize: "0.9em", color: "#666", marginBottom: "16px"}}>By continuing, I certify that I am the user associated with the login provided and have permission to access this system.</div>
                                 <div className={styles.center}>
-                                    <Button type='submit' primary disabled={!form.isValid || !form.isInitialValid}>Sign In</Button>
+                                    <Button type='submit' primary disabled={!form.isValid || !form.touched }>Sign In</Button>
                                 </div>
                             </FormikForm>}
                         </Formik>
