@@ -75,7 +75,7 @@ export function LoginPage() {
     return <>
         <div className={styles.layout}>
             <Card className={styles.card} fluid >
-                <Card.Content header >
+                <Card.Content>
                     <Card.Header>{logo} Company Application</Card.Header>
                 </Card.Content>
                 <Card.Content>

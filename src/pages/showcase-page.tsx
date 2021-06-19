@@ -23,8 +23,8 @@ export function ShowcasePage() {
         }
     }, [])
 
-    const cards = results.length > 0 ? <Card.Group>
-        {results.map((sc) => <Card href={sc.url} className={styles.card} header={sc.name} description={sc.description} image={sc.imageUrl} />)}
+    const cards = results.length > 0 ? <Card.Group centered>
+        {results.map((sc) => <Card key={sc.url} href={sc.url} className={styles.card} header={sc.name} description={sc.description} image={sc.imageUrl} />)}
     </Card.Group> : <Message content="No results..." icon={{ name: "warning sign" }} />
 
     return (
@@ -41,7 +41,7 @@ export function ShowcasePage() {
                 </Container>
             </Menu>
             <Container>
-                <div className={styles.description}>This is a simple application showing different UI designs in React and semantic-ui built by me.  When in an individual page, click the button in the lower right to go back to this listing page.</div>
+                <div className={styles.description}>This is a simple application showing different UI designs in React and semantic-ui built by me.  When in an individual page, click the button in the lower right to go back to this listing page.  The pages have been built out in single folders.  Feel free to copy a folder into your project for a quick start on a particular layout or design.</div>
                 {cards}
             </Container>
         </div>
