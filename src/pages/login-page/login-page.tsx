@@ -25,7 +25,6 @@ export function LoginPage() {
     </span>
 
     return <>
-        <ShowcaseButton />
         <div className={styles.layout}>
             <Card className={styles.card} fluid >
                 <Card.Content header >
@@ -79,6 +78,7 @@ export function LoginPage() {
                 </Card.Content>
             </Card>
             <div className={styles.attribution}>Photo by <a tabIndex={-1} href="https://unsplash.com/@kalenemsley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kalen Emsley</a> on <a tabIndex={-1} href="https://unsplash.com/s/photos/mountains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></div>
+            <ShowcaseButton />
         </div>
     </>
 }
