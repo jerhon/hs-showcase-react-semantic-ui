@@ -1,0 +1,10 @@
+{
+  "showcases": [
+    {
+      "name": "Login Page",
+      "description": "A simple login form with sign up section to the left of the login.",
+      "url": "/login",
+      "imageUrl": "/images/login-form.jpg"
+    }
+  ]
+}

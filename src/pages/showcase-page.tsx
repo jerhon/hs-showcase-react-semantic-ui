@@ -1,20 +1,49 @@
-import React from "react";
-import {List} from "semantic-ui-react";
+import React,  { useCallback, useState} from "react";
+import {Card, Container, Input, Menu, Message } from "semantic-ui-react";
+import styles from "./showcase-page.module.css"
+import data from "./pages.json"
 
-export function ShowcaseListPage() {
+export interface ShowcaseItem {
+    name: string,
+    description: string,
+    url: string,
+    imageUrl?: string
+}
+
+export function ShowcasePage() {
+
+    const [results, setResults] = useState<ShowcaseItem[]>(data.showcases);
+
+    const searchCallback = useCallback((event: any) => {
+        const value = event?.target?.value
+        if (value) {
+            setResults(data.showcases.filter((r) => r.name.includes(value) || r.description.includes(value)))
+        } else {
+            setResults(data.showcases)
+        }
+    }, [])
+
+    const cards = results.length > 0 ? <Card.Group>
+        {results.map((sc) => <Card href={sc.url} className={styles.card} header={sc.name} description={sc.description} image={sc.imageUrl} />)}
+    </Card.Group> : <Message content="No results..." icon={{ name: "warning sign" }} />
 
     return (
         <div>
-            <div>This is a simple application showing different UI designs that I've built from semantic-ui for the web.</div>
-            <List divided relaxed>
-                <List.Item>
-                    <List.Icon name="sign-in" />
-                    <List.Content>
-                        <List.Header as='a' href="/login">Login Form</List.Header>
-                        <List.Description>A simple login form with sign up section to the left of the login.</List.Description>
-                    </List.Content>
-                </List.Item>
-            </List>
+            <Menu borderless compact attached="top" stackable>
+                <Container>
+                    <Menu.Item header className={styles.header}>
+                        <img src="/images/honlsoft.svg" alt="Honlsoft Logo" />
+                        <h1>Honlsoft Showcase</h1>
+                    </Menu.Item>
+                    <Menu.Item position="right">
+                        <Input placeholder="Search..." icon={{ name: 'search' }}   onChange={searchCallback} />
+                    </Menu.Item>
+                </Container>
+            </Menu>
+            <Container>
+                <div className={styles.description}>This is a simple application showing different UI designs in React and semantic-ui built by me.  When in an individual page, click the button in the lower right to go back to this listing page.</div>
+                {cards}
+            </Container>
         </div>
     )
 }
